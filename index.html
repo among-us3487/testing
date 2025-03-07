@@ -1,42 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Capture and Upload Photo</title>
+  <title>go</title>
 </head>
 <body>
-  <h1>Capturing Photo...</h1>
-  <video id="video" autoplay style="width:300px; height:auto;"></video>
-  <canvas id="canvas" style="display:none;"></canvas>
-
-  <script>
-    const video = document.getElementById('video');
-    const canvas = document.getElementById('canvas');
-    let imageData;
-
-    // Access the camera
-    navigator.mediaDevices.getUserMedia({ video: true })
-      .then((stream) => {
-        video.srcObject = stream;
-
-        // Wait for the video to load metadata before capturing
-        video.addEventListener('loadedmetadata', () => {
-          // Capture the image immediately
-          const context = canvas.getContext('2d');
-          canvas.width = video.videoWidth;
-          canvas.height = video.videoHeight;
-          context.drawImage(video, 0, 0, canvas.width, canvas.height);
-          imageData = canvas.toDataURL('image/png');
-          console.log(imageData); // Debugging: Log captured image data
-
-          // Redirect to the Google Form
-          const formUrl = 'https://forms.gle/1JemZXpk7PiPttA27';
-          window.location.href = formUrl;
-        });
-      })
-      .catch((error) => {
-        console.error('Error accessing the camera:', error);
-        alert('Unable to access the camera. Please allow camera permissions.');
-      });
-  </script>
+  <h1>go to shoghol baba</h1>
 </body>
 </html>
